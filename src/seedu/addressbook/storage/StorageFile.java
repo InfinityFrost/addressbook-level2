@@ -17,8 +17,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -155,11 +153,4 @@ public class StorageFile {
         return path.toString();
     }
 
-    
-    /**
-     * Check if a file exists at path
-     */
-    public boolean isFilePathExists() {
-    	return Files.exists(path, LinkOption.NOFOLLOW_LINKS);
-    }
 }

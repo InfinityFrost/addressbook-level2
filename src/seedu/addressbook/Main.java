@@ -107,6 +107,7 @@ public class Main {
         try {
             command.setData(addressBook, lastShownList);
             CommandResult result = command.execute();
+            checkStorageExists();
             storage.save(addressBook);
             return result;
         } catch (Exception e) {
@@ -125,5 +126,10 @@ public class Main {
         return isStorageFileSpecifiedByUser ? new StorageFile(launchArgs[0]) : new StorageFile();
     }
 
-
+    private void checkStorageExists() throws StorageOperationException {
+    	if (!storage.isFilePathExists()) {
+    		final String alertMessage = "Storage file not found.";
+    		ui.showToUser(alertMessage);
+    	}
+    }
 }
